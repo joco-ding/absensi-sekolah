@@ -30,9 +30,12 @@ function tampilkanData() {
     const item = daftarSiswa[i];
     const elemenbarisdata = document.createElement('tr');
     elemenbarisdata.innerHTML = `<td>
-      <button type="button" onclick="hapusData(${i})" class="btn btn-danger">{' '}
-      <button type="button" onclick="tampilkanUpdateData(${i})" class="btn btn-success">{' '}
+      <button type="button" onclick="hapusData(${i})" class="btn btn-danger">
         Hapus Data
+      </button>
+      
+      <button type="button" onclick="tampilkanUpdateData(${i})" class="btn btn-success">
+      Update Data
       </button> ${item.nama}</td><td>${item.jam}</td>`;
     elemenTabel.appendChild(elemenbarisdata);
   }

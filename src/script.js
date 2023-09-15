@@ -33,14 +33,7 @@ function tampilkanData() {
 }
 
 function hapusData(z) {
-  const jumlahSiswa = daftarSiswa.length;
-  const daftarSiswaBaru = [];
-  for (let i = 0; i < jumlahSiswa; i++) {
-    if (i === z) continue
-    const item = daftarSiswa[i];
-    daftarSiswaBaru.push(item)
-  }
-  daftarSiswa = daftarSiswaBaru
+  daftarSiswa.splice(z, 1)
   simpanData('siswa', daftarSiswa)
   tampilkanData()
 }

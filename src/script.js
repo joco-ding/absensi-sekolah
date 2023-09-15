@@ -1,3 +1,8 @@
+const elNamaSiswa = document.getElementById('nama-siswa');
+const elJamMasuk = document.getElementById('jam-masuk');
+const elButton = document.getElementById('tombol-tambah')
+let indexDataUpdate = -1
+
 function ambilData(key) {
   const dataString = localStorage.getItem(key)
   if (typeof dataString === 'undefined' || dataString === null) {
@@ -8,14 +13,14 @@ function ambilData(key) {
 }
 
 function simpanData(key, data) {
-  const dataTersimpan = JSON.stringify({data})
+  const dataTersimpan = JSON.stringify({ data })
   console.log(dataTersimpan)
   localStorage.setItem(key, dataTersimpan)
 }
 
 let daftarSiswa = ambilData('siswa') || []
 console.log(daftarSiswa)
-document.getElementById('tombol-tambah').addEventListener('click', tambahData);
+elButton.addEventListener('click', tambahData);
 const elemenTabel = document.getElementById('data-siswa');
 
 function tampilkanData() {
@@ -25,11 +30,20 @@ function tampilkanData() {
     const item = daftarSiswa[i];
     const elemenbarisdata = document.createElement('tr');
     elemenbarisdata.innerHTML = `<td>
-      <button type="button" onclick="hapusData(${i})" class="btn btn-danger">
+      <button type="button" onclick="hapusData(${i})" class="btn btn-danger">{' '}
+      <button type="button" onclick="tampilkanUpdateData(${i})" class="btn btn-success">{' '}
         Hapus Data
       </button> ${item.nama}</td><td>${item.jam}</td>`;
     elemenTabel.appendChild(elemenbarisdata);
   }
+}
+
+function tampilkanUpdateData(z) {
+  indexDataUpdate = z
+  const dataUpdate = daftarSiswa[z]
+  elNamaSiswa.value = dataUpdate.nama
+  elJamMasuk.value = dataUpdate.jam
+  elButton.innerText = 'Update Data'
 }
 
 function hapusData(z) {
@@ -40,13 +54,19 @@ function hapusData(z) {
 
 function tambahData() {
   console.log('tombol tambah data di-klik');
-  let namaSiswa = document.getElementById('nama-siswa').value;
-  let jamMasuk = document.getElementById('jam-masuk').value;
+  let namaSiswa = elNamaSiswa.value;
+  let jamMasuk = elJamMasuk.value;
   if (namaSiswa === '' || jamMasuk === '') {
     alert('Mohon lengkapi isian!');
     return;
   }
-  daftarSiswa.push({ nama: namaSiswa, jam: jamMasuk });
+  if (indexDataUpdate > 0) {
+    indexDataUpdate = -1
+    elButton.innerText = 'Tambah Data'
+    daftarSiswa.splice(indexDataUpdate, 1, { nama: namaSiswa, jam: jamMasuk })
+  } else {
+    daftarSiswa.push({ nama: namaSiswa, jam: jamMasuk });
+  }
   simpanData('siswa', daftarSiswa)
   console.log(JSON.stringify({ daftarSiswa }));
   tampilkanData()

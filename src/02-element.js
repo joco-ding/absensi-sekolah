@@ -10,6 +10,7 @@ const elNomorAbsen = document.getElementById('nomor-absen')
 const elKelas = document.getElementById('kelas');
 const elButtonSiswa = document.getElementById('tombol-siswa')
 const elButtonAbsen = document.getElementById('tombol-absen')
+const elUploadFile = document.getElementById('upload')
 
 const elNavMenu = document.querySelectorAll(".menu-halaman")
 

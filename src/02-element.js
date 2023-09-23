@@ -11,6 +11,8 @@ const elKelas = document.getElementById('kelas');
 const elButtonSiswa = document.getElementById('tombol-siswa')
 const elButtonAbsen = document.getElementById('tombol-absen')
 const elUploadFile = document.getElementById('upload')
+const elModalTitle = document.getElementById('modal-title')
+const elModalBody = document.getElementById('modal-body')
 
 const elNavMenu = document.querySelectorAll(".menu-halaman")
 

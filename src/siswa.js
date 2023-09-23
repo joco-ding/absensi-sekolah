@@ -10,7 +10,7 @@ function tampilkanDataSiswa() {
     elemenbarisdata.innerHTML = `
     <td class="text-center">
       ${item.nomor} 
-      <button type="button" class="btn btn-link">
+      <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#kodeQRModal" onclick="buatKodeQR('${item.nomor}-${item.nama}')">
         <i class="bi bi-qr-code"></i>
       </button>
     </td>

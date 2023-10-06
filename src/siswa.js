@@ -32,7 +32,7 @@ function tampilkanUpdateDataSiswa(z) {
   const dataUpdate = dataSiswa[z]
   elNamaSiswa.value = dataUpdate.nama
   elNomorAbsenSiswa.value = dataUpdate.nomor
-  elButton.innerText = 'Update Data'
+  elButtonSiswa.innerText = 'Update Data'
 }
 
 function hapusDataSiswa(z) {
@@ -55,7 +55,7 @@ function tambahSiswa() {
     return
   }
   if (indexDataUpdate > 0) {
-    elButton.innerText = 'Tambah Data'
+    elButtonSiswa.innerText = 'Tambah Data'
     dataSiswa.splice(indexDataUpdate, 1, { nomor, nama: namaSiswa })
     indexDataUpdate = -1
   } else {

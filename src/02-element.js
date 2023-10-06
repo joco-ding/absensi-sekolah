@@ -7,7 +7,6 @@ const elFormAbsen = document.getElementById('form-absen')
 const elNamaSiswa = document.getElementById('nama-siswa')
 const elNomorAbsenSiswa = document.getElementById('nomor-absen-siswa')
 const elNomorAbsen = document.getElementById('nomor-absen')
-const elKelas = document.getElementById('kelas');
 const elButtonSiswa = document.getElementById('tombol-siswa')
 const elButtonAbsen = document.getElementById('tombol-absen')
 const elUploadFile = document.getElementById('upload')

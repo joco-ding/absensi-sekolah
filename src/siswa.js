@@ -14,7 +14,7 @@ function tampilkanDataSiswa() {
         <i class="bi bi-qr-code"></i>
       </button>
     </td>
-    <td>${item.nama}</td><td>${item.kelas}</td>
+    <td>${item.nama}</td>
     <td class="text-center">
       <button type="button" onclick="tampilkanUpdateDataSiswa(${i})" class="btn btn-link">
       <i class="bi bi-pencil-square"></i>
@@ -32,7 +32,6 @@ function tampilkanUpdateDataSiswa(z) {
   const dataUpdate = dataSiswa[z]
   elNamaSiswa.value = dataUpdate.nama
   elNomorAbsenSiswa.value = dataUpdate.nomor
-  elKelas.value = dataUpdate.kelas
   elButton.innerText = 'Update Data'
 }
 
@@ -46,8 +45,7 @@ function tambahSiswa() {
   console.log('tombol tambah data di-klik');
   let namaSiswa = elNamaSiswa.value;
   let nomor = elNomorAbsenSiswa.value;
-  let kelas = elKelas.value;
-  if (namaSiswa === '' || nomor === '' || kelas === '') {
+  if (namaSiswa === '' || nomor === '') {
     alert('Mohon lengkapi isian!')
     return
   }
@@ -58,10 +56,10 @@ function tambahSiswa() {
   }
   if (indexDataUpdate > 0) {
     elButton.innerText = 'Tambah Data'
-    dataSiswa.splice(indexDataUpdate, 1, { nomor, nama: namaSiswa, kelas })
+    dataSiswa.splice(indexDataUpdate, 1, { nomor, nama: namaSiswa })
     indexDataUpdate = -1
   } else {
-    dataSiswa.push({ nomor, nama: namaSiswa, kelas });
+    dataSiswa.push({ nomor, nama: namaSiswa });
   }
   simpanData('siswa', dataSiswa)
   console.log(JSON.stringify({ dataSiswa }));

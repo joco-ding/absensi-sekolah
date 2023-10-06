@@ -28,6 +28,9 @@
             <li class="nav-item">
               <a class="nav-link menu-halaman" menu="absen-page" href="#">Data Absen</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link menu-halaman" menu="qrcode-page" href="#">Cetak QR Code</a>
+            </li>
           </ul>
           <span class="text-bg-dark me-3">
             <div class="upload-btn-wrapper">
@@ -66,10 +69,6 @@
             <label for="nama-siswa" class="form-label">Nama Siswa</label>
             <input type="text" class="form-control" id="nama-siswa" placeholder="Masukkan Nama Siswa" value="" />
           </div>
-          <div class="mb-3">
-            <label for="kelas" class="form-label">Kelas</label>
-            <input type="text" class="form-control" id="kelas" placeholder="Kelas" value="" />
-          </div>
           <button type="button" id="tombol-siswa" class="btn btn-primary">
             Tambah Data
           </button>
@@ -81,7 +80,6 @@
             <tr>
               <th class="text-center">Nomor Absen</th>
               <th>Nama Siswa</th>
-              <th>Kelas</th>
               <th class="text-center">Edit</th>
             </tr>
           </thead>
@@ -122,6 +120,11 @@
         </table>
       </div>
     </div>
+  </div>
+
+  
+  <!-- qrcode-page -->
+  <div class="container d-none mt-80" id="qrcode-page">
   </div>
 
   <!-- Modal -->

@@ -1,3 +1,4 @@
+
 function buatKodeQR(kode) {
   elModalTitle.innerText = 'Kode QR'
   elModalBody.innerHTML = ''
@@ -15,4 +16,47 @@ function buatKodeQR(kode) {
   });
   elModalBody.innerHTML = ''
   elModalBody.appendChild(bodyQR)
+}
+
+function tampilkanQrCode() {
+  elQrCode.innerHTML = ''
+  let index = 0
+  const jumlahSiswa = dataSiswa.length
+  let _loop = true
+  while (_loop) {
+    const elRow = document.createElement('div')
+    elRow.setAttribute('class', 'row')
+    for (let j = 0; j < 3; j++) {
+      console.log(JSON.stringify({ index, jumlahSiswa }))
+      const elCol = document.createElement('div')
+      elCol.setAttribute('class', 'col-4')
+      let nama = ''
+      let nomorAbsen = ''
+      if (jumlahSiswa > index) {
+        const data = dataSiswa[index]
+        nama = data.nama
+        nomorAbsen = data.nomor
+        const kode = `${nomorAbsen}-${nama}`
+        console.log(JSON.stringify({ kode }))
+        // elCol.innerHTML = kode
+        const elTempQR = document.createElement('div')
+        elTempQR.setAttribute('class', 'm-auto mt-3')
+        new QRCode(elTempQR, {
+          text: kode,
+          width: 100,
+          height: 100,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H
+        });
+        const elTempQRCode = buatElCard(kode, elTempQR)
+        elCol.appendChild(elTempQRCode)
+      } else {
+        _loop = false
+      }
+      elRow.appendChild(elCol)
+      index++
+    }
+    elQrCode.appendChild(elRow)
+  }
 }

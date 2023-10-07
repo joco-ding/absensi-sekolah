@@ -2,6 +2,7 @@ elButtonSiswa.addEventListener('click', tambahSiswa);
 const elTabelSiswa = document.getElementById('data-siswa');
 
 function tampilkanDataSiswa() {
+  tampilkanQrCode()
   elTabelSiswa.innerHTML = '';
   const jumlahSiswa = dataSiswa.length;
   for (let i = 0; i < jumlahSiswa; i++) {
@@ -49,16 +50,17 @@ function tambahSiswa() {
     alert('Mohon lengkapi isian!')
     return
   }
-  const cariSiswa = dataSiswa.find(d => d.nomor === nomor)
-  if (typeof cariSiswa !== 'undefined') {
-    alert('Nomor Absen Sudah Digunakan')
-    return
-  }
-  if (indexDataUpdate > 0) {
+
+  if (indexDataUpdate > -1) {
     elButtonSiswa.innerText = 'Tambah Data'
     dataSiswa.splice(indexDataUpdate, 1, { nomor, nama: namaSiswa })
     indexDataUpdate = -1
   } else {
+    const cariSiswa = dataSiswa.find(d => d.nomor === nomor)
+    if (typeof cariSiswa !== 'undefined') {
+      alert('Nomor Absen Sudah Digunakan')
+      return
+    }
     dataSiswa.push({ nomor, nama: namaSiswa });
   }
   simpanData('siswa', dataSiswa)

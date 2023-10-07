@@ -12,11 +12,18 @@ const elButtonAbsen = document.getElementById('tombol-absen')
 const elUploadFile = document.getElementById('upload')
 const elModalTitle = document.getElementById('modal-title')
 const elModalBody = document.getElementById('modal-body')
+const elQrCode = document.getElementById('area-cetak-qrcode')
 
+const elHalaman = document.querySelectorAll('.halaman')
 const elNavMenu = document.querySelectorAll(".menu-halaman")
 
-const elPage = {
-  'home-page': document.getElementById('home-page'),
-  'siswa-page': document.getElementById('siswa-page'),
-  'absen-page': document.getElementById('absen-page'),
+function buatElCard(title, element) {
+  const elCard = document.createElement('div')
+  elCard.setAttribute('class', 'card d-flex')
+  const elCardBody = document.createElement('div')
+  elCardBody.setAttribute('class', 'card-body')
+  elCardBody.innerHTML=`<p class="card-text text-center"><small>${title}</small></p>`
+  elCard.appendChild(element)
+  elCard.appendChild(elCardBody)
+  return elCard
 }

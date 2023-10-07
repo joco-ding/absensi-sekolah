@@ -30,13 +30,11 @@ function tampilkanQrCode() {
       console.log(JSON.stringify({ index, jumlahSiswa }))
       const elCol = document.createElement('div')
       elCol.setAttribute('class', 'col-4')
-      let nama = ''
-      let nomorAbsen = ''
       if (jumlahSiswa > index) {
         const data = dataSiswa[index]
-        nama = data.nama
-        nomorAbsen = data.nomor
-        const kode = `${nomorAbsen}-${nama}`
+        const nama = data.nama
+        const nomor = data.nomor
+        const kode = `${nomor}-${nama}`
         console.log(JSON.stringify({ kode }))
         // elCol.innerHTML = kode
         const elTempQR = document.createElement('div')

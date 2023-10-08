@@ -5,16 +5,18 @@ function startQRScan() {
   codeReader.decodeFromVideoDevice(null, videoElement, (result, err) => {
     if (result) {
       // Hasil pemindaian berhasil
-      console.log(result.text);
-      hasilElement.innerText = result.text;
+      console.log(result.text)
+      hasilElement.innerText = result.text
       stopQRScan()
-      const regex = /^\d+/;
-      const nomorAbsen = result.text.match(regex);
-      tambahDataAbsen(nomorAbsen)
+      const regex = /^\d+/
+      const nomorAbsen = result.text.match(regex)
+      if (nomorAbsen.length === 1) {
+        tambahDataAbsen(nomorAbsen[0])
+      }
     }
 
     if (err && !(err instanceof ZXing.NotFoundException)) {
-      console.error(err);
+      console.error(err)
     }
   });
 }

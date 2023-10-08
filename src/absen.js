@@ -24,7 +24,7 @@ function tambahDataAbsen(nomor) {
 
   const cariSiswa = dataSiswa.find(d => d.nomor === nomor)
   if (typeof cariSiswa === 'undefined') {
-    alert(`Data Siswa dengan Nomor Absen ${nomor} tidak ditemukan! ${JSON.stringify({ nomor, dataSiswa })}`)
+    alert(`Data Siswa dengan Nomor Absen ${nomor} tidak ditemukan!`)
     return
   }
   const now = new Date();

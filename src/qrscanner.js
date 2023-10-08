@@ -1,6 +1,6 @@
 function QrScan() {
   console.log('QrScan')
-  document.getElementById('absen-page').addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function () {
     codeReader
       .decodeFromVideoDevice(
         undefined,

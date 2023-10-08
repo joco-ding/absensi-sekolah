@@ -20,6 +20,7 @@ const elNavMenu = document.querySelectorAll(".menu-halaman")
 const elKodeBaris = document.getElementById('kode-per-baris')
 const elUkuranKode = document.getElementById('ukuran-kode')
 
+const bMulaiScan = document.getElementById('mulai-scan')
 const videoElement = document.getElementById('scanner')
 const hasilElement = document.getElementById('hasil')
 

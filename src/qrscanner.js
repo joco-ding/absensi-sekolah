@@ -8,6 +8,9 @@ function startQRScan() {
       console.log(result.text);
       hasilElement.innerText = result.text;
       stopQRScan()
+      const regex = /^\d+/;
+      const nomorAbsen = result.text.match(regex);
+      tambahDataAbsen(nomorAbsen)
     }
 
     if (err && !(err instanceof ZXing.NotFoundException)) {

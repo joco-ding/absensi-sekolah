@@ -16,9 +16,7 @@ function tampilkanDataAbsen() {
   }
 }
 
-function tambahDataAbsen() {
-  console.log('tombol tambah data absen di-klik');
-  let nomor = elNomorAbsen.value;
+function tambahDataAbsen(nomor) {
   if (nomor === '') {
     alert('Mohon lengkapi isian!');
     return;

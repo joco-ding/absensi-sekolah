@@ -1,6 +1,6 @@
 
 
-elButtonAbsen.addEventListener('click', tambahDataAbsen);
+// elButtonAbsen.addEventListener('click', tambahDataAbsen);
 const elemenTabel = document.getElementById('data-absen');
 
 function tampilkanDataAbsen() {

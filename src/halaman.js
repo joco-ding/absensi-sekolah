@@ -10,6 +10,11 @@ function bukaHalaman(e) {
   });
   this.classList.add('active')
   const dataMenu = this.getAttribute('menu');
+
+  if (dataMenu === 'absen-page') {
+    QrScan()
+  }
+  
   elHalaman.forEach(element => {
     element.classList.add('d-none')
   })

@@ -11,6 +11,8 @@ let KodeperBaris = 3
 let UkuranKode = 100
 let Kolom = 'col-4'
 
+const codeReader = new ZXing.BrowserQRCodeReader();
+
 function ambilData(key) {
   const dataString = localStorage.getItem(key)
   if (typeof dataString === 'undefined' || dataString === null) {

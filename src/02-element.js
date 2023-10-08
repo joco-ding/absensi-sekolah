@@ -20,6 +20,9 @@ const elNavMenu = document.querySelectorAll(".menu-halaman")
 const elKodeBaris = document.getElementById('kode-per-baris')
 const elUkuranKode = document.getElementById('ukuran-kode')
 
+const videoElement = document.getElementById('scanner')
+const hasilElement = document.getElementById('hasil')
+
 function buatElCard(title, element, ukuran) {
   const elCard = document.createElement('div')
   const elKode = document.createElement('div')

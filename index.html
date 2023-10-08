@@ -125,11 +125,21 @@
 
   <!-- qrcode-page -->
   <main class="container d-none mt-80 halaman" id="qrcode-page">
-    <div class="d-flex justify-content-between align-items-center mb-3 d-print-none">
+    <div class="d-flex justify-content-between mb-3 d-print-none">
       <h1 class="mb-0">Cetak Kode QR</h1>
-      <button type="button" class="btn btn-primary" onclick="window.print()">
-        <i class="bi bi-printer h5"></i> Cetak
-      </button>
+      <div class="input-group" style="width: 400px;">
+        <div class="form-floating">
+          <input type="number" class="form-control" id="kode-per-baris" placeholder="" value="3">
+          <label for="floatingInput">Kode per Baris</label>
+        </div>
+        <div class="form-floating">
+          <input type="number" class="form-control" id="ukuran-kode" placeholder="" value="100">
+          <label for="floatingInput">Ukuran Kode (px)</label>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="cetakQRCode()">
+          <i class="bi bi-printer h5"></i> Cetak
+        </button>
+      </div>
     </div>
     <div id="area-cetak-qrcode"></div>
   </main>

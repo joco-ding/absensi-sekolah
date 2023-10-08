@@ -17,13 +17,19 @@ const elQrCode = document.getElementById('area-cetak-qrcode')
 const elHalaman = document.querySelectorAll('.halaman')
 const elNavMenu = document.querySelectorAll(".menu-halaman")
 
-function buatElCard(title, element) {
+const elKodeBaris = document.getElementById('kode-per-baris')
+const elUkuranKode = document.getElementById('ukuran-kode')
+
+function buatElCard(title, element, ukuran) {
   const elCard = document.createElement('div')
-  elCard.setAttribute('class', 'card d-flex')
+  const elKode = document.createElement('div')
+  elKode.setAttribute('class', 'mx-auto')
+  elKode.setAttribute('style',`max-width: ${ukuran}px`)
+  elKode.appendChild(element)
   const elCardBody = document.createElement('div')
-  elCardBody.setAttribute('class', 'card-body')
-  elCardBody.innerHTML=`<p class="card-text text-center"><small>${title}</small></p>`
-  elCard.appendChild(element)
+  elCardBody.setAttribute('class', 'p-0')
+  elCardBody.innerHTML=`<div class="w-100 mx-auto" style="max-width: ${ukuran}px"><p class="text-center text-truncate"><small>${title}</small></p></div>`
+  elCard.appendChild(elKode)
   elCard.appendChild(elCardBody)
   return elCard
 }

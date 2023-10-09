@@ -47,7 +47,9 @@ Selama proses pengembangan, semua file JavaScript yang berada di folder `src` ak
 2. Buka terminal atau command prompt di direktori root dari aplikasi Anda.
 3. Jalankan perintah berikut:
 
-`minify.exe -r -b -o .\js\combined.js --match '\\*.js' .\src\`
+```
+minify.exe -r -b -o .\js\combined.js --match '\\*.js' .\src\
+```
 
 4. Setelah perintah dijalankan, semua file JavaScript di folder `src` akan digabungkan dan diminifikasi ke dalam file `js/combined.js`.
 

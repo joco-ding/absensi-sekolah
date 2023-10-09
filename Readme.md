@@ -46,7 +46,9 @@ Selama proses pengembangan, semua file JavaScript yang berada di folder `src` ak
 1. Pastikan Anda telah mengunduh dan menginstal aplikasi `minify` dari [sini](https://github.com/tdewolff/minify/tree/master).
 2. Buka terminal atau command prompt di direktori root dari aplikasi Anda.
 3. Jalankan perintah berikut:
+
 `minify.exe -r -b -o .\js\combined.js --match '\\*.js' .\src\`
+
 4. Setelah perintah dijalankan, semua file JavaScript di folder `src` akan digabungkan dan diminifikasi ke dalam file `js/combined.js`.
 
 Dengan melakukan minifikasi, ukuran file JavaScript akan menjadi lebih kecil sehingga meningkatkan kecepatan pemuatan halaman web.

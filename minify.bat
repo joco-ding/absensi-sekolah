@@ -1,1 +1,0 @@
-minify.exe -r -b -o .\js\combined.js --match '\\*.js' .\src\

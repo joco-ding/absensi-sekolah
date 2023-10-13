@@ -55,6 +55,12 @@ minify.exe -r -b -o .\js\combined.js --match '\\*.js' .\src\
 
 Dengan melakukan minifikasi, ukuran file JavaScript akan menjadi lebih kecil sehingga meningkatkan kecepatan pemuatan halaman web.
 
+### Rekap Absen
+
+1. Unduh file rekap yang sudah dilengkapi dengan formula-nya di [sini](https://joco-ding.github.io/absensi-sekolah/rekap.xlsx).
+2. Salin sheet dengan nama "Rekap" dengan meng-klik ujung kiri-atas dari cell
+3. Buat Sheet baru pada file absen Anda, dan paste
+
 ---
 
 Dibuat dengan ❤️ oleh Joko Nugroho

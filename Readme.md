@@ -58,8 +58,8 @@ Dengan melakukan minifikasi, ukuran file JavaScript akan menjadi lebih kecil seh
 ### Rekap Absen
 
 1. Unduh file rekap yang sudah dilengkapi dengan formula-nya di [sini](https://joco-ding.github.io/absensi-sekolah/rekap.xlsx).
-2. Salin sheet dengan nama "Rekap" dengan meng-klik ujung kiri-atas dari cell
-3. Buat Sheet baru pada file absen Anda, dan paste
+2. Buka file tersebut dan salin seluruh isi dari sheet "Rekap" dengan cara mengklik pojok kiri atas sel sehingga seluruh sheet terpilih.
+3. Buat sheet baru pada file absen Anda dan paste seluruh isi yang telah disalin.
 
 ---
 

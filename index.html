@@ -32,27 +32,26 @@
               <a class="nav-link menu-halaman" menu="qrcode-page" href="#">Cetak Kode QR</a>
             </li>
           </ul>
-          <span class="text-bg-dark me-3">
-            <div class="upload-btn-wrapper">
-              <button class="btn btn-link text-white" type="button"><i class="bi bi-cloud-upload-fill h5"></i></button>
-              <input type="file" id="upload" onchange="xlsxToStore()" />
-            </div>
-
-            <div class="upload-btn-wrapper">
-              <button type="button" onclick="downloadExcel()" class="btn btn-link text-white">
-                <i class="bi bi-cloud-download-fill h5"></i>
-              </button>
-            </div>
-          </span>
         </div>
       </div>
     </nav>
   </header>
 
   <!-- home-page -->
-  <main class="w-80 m-auto halaman" id="home-page">
+  <main class="w-80 m-auto halaman text-center" id="home-page">
     <h1>Selamat Datang di</h1>
     <h2>Sistem Absensi Sekolah</h2>
+    <div class="btn-group" role="group" aria-label="Backup-Restore">
+      <div class="upload-btn-wrapper">
+        <button class="btn btn-primary" type="button"><i class="bi bi-cloud-upload-fill h5"></i> Pemulihan</button>
+        <input type="file" id="upload" onchange="xlsxToStore()" />
+      </div>
+      <div class="upload-btn-wrapper">
+        <button type="button" onclick="downloadExcel()" class="btn btn-success">
+          <i class="bi bi-cloud-download-fill h5"></i> Pencadangan
+        </button>
+      </div>
+    </div>
   </main>
 
   <!-- siswa-page -->
@@ -162,7 +161,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
   <script src="https://unpkg.com/@zxing/library@0.18.3/umd/index.min.js"></script>
-  <script src="js/combined.js?v=28"></script>
+  <script src="js/combined.js?v=29"></script>
 </body>
 
 </html>

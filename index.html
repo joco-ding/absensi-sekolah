@@ -41,16 +41,12 @@
   <main class="w-80 m-auto halaman text-center" id="home-page">
     <h1>Selamat Datang di</h1>
     <h2>Sistem Absensi Sekolah</h2>
-    <div class="btn-group" role="group" aria-label="Backup-Restore">
-      <div class="upload-btn-wrapper">
-        <button class="btn btn-primary" type="button"><i class="bi bi-cloud-upload-fill h5"></i> Pemulihan</button>
-        <input type="file" id="upload" onchange="xlsxToStore()" />
-      </div>
-      <div class="upload-btn-wrapper">
-        <button type="button" onclick="downloadExcel()" class="btn btn-success">
-          <i class="bi bi-cloud-download-fill h5"></i> Pencadangan
-        </button>
-      </div>
+    <div class="btn-group upload-btn-wrapper" role="group" aria-label="Backup-Restore">
+      <button style="margin-right: -3px;" class="btn btn-primary" type="button"><i class="bi bi-arrow-clockwise"></i> Pemulihan</button>
+      <input type="file" id="upload" onchange="xlsxToStore()" />
+      <button type="button" onclick="downloadExcel()" class="btn btn-success">
+        <i class="bi bi-arrow-down-circle"></i> Pencadangan
+      </button>
     </div>
   </main>
 

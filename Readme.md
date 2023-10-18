@@ -63,4 +63,4 @@ Dengan melakukan minifikasi, ukuran file JavaScript akan menjadi lebih kecil seh
 
 ---
 
-Dibuat dengan ❤️ oleh Joko Nugroho
+Dibuat oleh Joko Nugroho

@@ -11,9 +11,9 @@
   <link rel="stylesheet" href="src/style.css?v=7" />
 </head>
 
-<body class="d-flex" id="body">
+<body id="body">
   <header class="d-print-none">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" data-bs-theme="dark">
       <div class="container-fluid">
         <a class="navbar-brand menu-halaman" menu="home-page" href="#">Absen Sekolah</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -38,20 +38,23 @@
   </header>
 
   <!-- home-page -->
-  <main class="w-80 m-auto halaman text-center" id="home-page">
-    <h1>Selamat Datang di</h1>
-    <h2>Sistem Absensi Sekolah</h2>
-    <div class="btn-group upload-btn-wrapper" role="group" aria-label="Backup-Restore">
-      <button style="margin-right: -3px;" class="btn btn-primary" type="button"><i class="bi bi-arrow-clockwise"></i> Pemulihan</button>
-      <input type="file" id="upload" onchange="xlsxToStore()" />
-      <button type="button" onclick="downloadExcel()" class="btn btn-success">
-        <i class="bi bi-arrow-down-circle"></i> Pencadangan
-      </button>
+  <main class="d-flex halaman" id="home-page">
+    <div class="m-auto text-center">
+      <h1>Selamat Datang di</h1>
+      <h2>Sistem Absensi Sekolah</h2>
+      <div class="btn-group upload-btn-wrapper" role="group" aria-label="Backup-Restore">
+        <button style="margin-right: -3px;" class="btn btn-primary" type="button"><i class="bi bi-arrow-clockwise"></i>
+          Pemulihan</button>
+        <input type="file" id="upload" onchange="xlsxToStore()" />
+        <button type="button" onclick="downloadExcel()" class="btn btn-success">
+          <i class="bi bi-arrow-down-circle"></i> Pencadangan
+        </button>
+      </div>
     </div>
   </main>
 
   <!-- siswa-page -->
-  <main class="container d-none mt-80 halaman" id="siswa-page">
+  <main class="container d-none halaman" id="siswa-page">
     <h1 class="mb-3">Data Siswa</h1>
     <div class="row">
       <div class="col-lg-5">
@@ -86,7 +89,7 @@
   </main>
 
   <!-- absen-page -->
-  <main class="container d-none mt-80 halaman" id="absen-page">
+  <main class="container d-none halaman" id="absen-page">
     <h1 class="mb-3">Data Absen</h1>
     <div class="row">
       <div class="col-lg-5 w-100">
@@ -115,7 +118,7 @@
 
 
   <!-- qrcode-page -->
-  <main class="container d-none mt-80 halaman" id="qrcode-page">
+  <main class="container d-none halaman" id="qrcode-page">
     <div class="d-flex justify-content-between mb-3 d-print-none">
       <h1 class="mb-0 d-none d-sm-block">Cetak Kode QR</h1>
       <div class="input-group" style="width: 400px;">

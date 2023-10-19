@@ -1,7 +1,5 @@
 
 // elemen
-const elBody = document.getElementById("body")
-
 const elFormSiswa = document.getElementById('form-siswa')
 const elFormAbsen = document.getElementById('form-absen')
 const elNamaSiswa = document.getElementById('nama-siswa')

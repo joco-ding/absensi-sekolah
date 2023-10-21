@@ -1,6 +1,6 @@
 
 function buatKodeQR(kode) {
-  elModalTitle.innerText = 'Kode QR'
+  elModalTitle.innerText = kode
   elModalBody.innerHTML = ''
   const bodyQR = document.createElement('div');
   bodyQR.setAttribute('class', 'm-auto')
@@ -57,15 +57,6 @@ function tampilkanQrCode() {
     }
     elQrCode.appendChild(elRow)
   }
-}
-
-
-function cetakQRCode() {
-  document.body.classList.add('p-0', 'm-0')
-  document.getElementById('qrcode-page').classList.remove('mt-80')
-  window.print()
-  document.body.classList.remove('p-0', 'm-0')
-  document.getElementById('qrcode-page').classList.add('mt-80')
 }
 
 async function fKolom(tempKPB) {

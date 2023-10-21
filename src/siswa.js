@@ -1,48 +1,48 @@
-elButtonSiswa.addEventListener('click', tambahSiswa);
-const elTabelSiswa = document.getElementById('data-siswa');
+elFormSiswa.addEventListener('submit', tambahSiswa);
 
 function tampilkanDataSiswa() {
   tampilkanQrCode()
-  elTabelSiswa.innerHTML = '';
-  const jumlahSiswa = dataSiswa.length;
+  elTabelSiswa.innerHTML = ''
+  const jumlahSiswa = dataSiswa.length
   for (let i = 0; i < jumlahSiswa; i++) {
-    const item = dataSiswa[i];
-    const elemenbarisdata = document.createElement('tr');
-    elemenbarisdata.innerHTML = `
-    <td class="text-center">
-      ${item.nomor} 
-      <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#kodeQRModal" onclick="buatKodeQR('${item.nomor}-${item.nama}')">
-        <i class="bi bi-qr-code"></i>
-      </button>
-    </td>
-    <td>${item.nama}</td>
-    <td class="text-center">
-      <button type="button" onclick="tampilkanUpdateDataSiswa(${i})" class="btn btn-link">
-      <i class="bi bi-pencil-square"></i>
-      </button>
-      <button type="button" onclick="hapusDataSiswa(${i})" class="btn btn-link">
-      <i class="bi bi-trash3"></i>
-      </button>
-    </td>`;
-    elTabelSiswa.appendChild(elemenbarisdata);
+    const item = dataSiswa[i]
+    const row = templateRowSiswa.cloneNode(true)
+    row.innerHTML = row.innerHTML
+      .replace(/nomor-absen/g, item.nomor)
+      .replace(/nama-siswa/g, item.nama)
+      .replace(/\(-1\)/g, `(${i})`)
+    elTabelSiswa.appendChild(row)
   }
 }
 
 function tampilkanUpdateDataSiswa(z) {
   indexDataUpdate = z
-  const dataUpdate = dataSiswa[z]
-  elNamaSiswa.value = dataUpdate.nama
-  elNomorAbsenSiswa.value = dataUpdate.nomor
+  const data = dataSiswa[z]
+  if (typeof data === 'undefined') {
+    alert('Data tidak ditemukan')
+    return
+  }
+  elNamaSiswa.value = data.nama
+  elNomorAbsenSiswa.value = data.nomor
   elButtonSiswa.innerText = 'Update Data'
 }
 
 function hapusDataSiswa(z) {
+  const data = dataSiswa[z]
+  if (typeof data === 'undefined') {
+    alert('Data tidak ditemukan')
+    return
+  }
+  if (confirm(`Yakin ingin menghapus ${data.nama}?`) === false) {
+    return
+  }
   dataSiswa.splice(z, 1)
   simpanData('siswa', dataSiswa)
   tampilkanDataSiswa()
 }
 
-function tambahSiswa() {
+function tambahSiswa(event) {
+  event.preventDefault();
   console.log('tombol tambah data di-klik');
   let namaSiswa = elNamaSiswa.value;
   let nomor = elNomorAbsenSiswa.value;
@@ -52,6 +52,20 @@ function tambahSiswa() {
   }
 
   if (indexDataUpdate > -1) {
+    const data = dataSiswa[indexDataUpdate]
+    let pesan = ''
+    if (data.nomor !== nomor) {
+      pesan = `nomor absen ${data.nomor} menjadi ${nomor}`
+    }
+    if (data.nama !== namaSiswa) {
+      if (pesan!=='') {
+        pesan = `${pesan} dan `
+      }
+      pesan = `${pesan} nama siswa ${data.nama} menjadi ${namaSiswa}`
+    }
+    if (confirm(`Yakin ingin mengedit ${pesan}?`) === false) {
+      return
+    }
     elButtonSiswa.innerText = 'Tambah Data'
     dataSiswa.splice(indexDataUpdate, 1, { nomor, nama: namaSiswa })
     indexDataUpdate = -1

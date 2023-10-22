@@ -27,7 +27,7 @@ function tampilkanQrCode() {
     const elRow = document.createElement('div')
     elRow.setAttribute('class', 'row page-break-inside-avoid')
     for (let j = 0; j < KodeperBaris; j++) {
-      console.log(JSON.stringify({ index, jumlahSiswa }))
+      // console.log(JSON.stringify({ index, jumlahSiswa }))
       const elCol = document.createElement('div')
       elCol.setAttribute('class', Kolom)
       if (jumlahSiswa > index) {
@@ -35,7 +35,7 @@ function tampilkanQrCode() {
         const nama = data.nama
         const nomor = data.nomor
         const kode = `${nomor}-${nama}`
-        console.log(JSON.stringify({ kode }))
+        // console.log(JSON.stringify({ kode }))
         // elCol.innerHTML = kode
         const elTempQR = document.createElement('div')
         elTempQR.setAttribute('class', 'm-auto mt-3')

@@ -13,6 +13,7 @@ function tampilkanDataSiswa() {
       .replace(/\(-1\)/g, `(${i})`)
     elTabelSiswa.appendChild(row)
   }
+  console.log(JSON.stringify({ jumlahSiswa }))
 }
 
 function tampilkanUpdateDataSiswa(z) {
@@ -58,7 +59,7 @@ function tambahSiswa(event) {
       pesan = `nomor absen ${data.nomor} menjadi ${nomor}`
     }
     if (data.nama !== namaSiswa) {
-      if (pesan!=='') {
+      if (pesan !== '') {
         pesan = `${pesan} dan `
       }
       pesan = `${pesan} nama siswa ${data.nama} menjadi ${namaSiswa}`
@@ -78,7 +79,7 @@ function tambahSiswa(event) {
     dataSiswa.push({ nomor, nama: namaSiswa });
   }
   simpanData('siswa', dataSiswa)
-  console.log(JSON.stringify({ dataSiswa }));
+  // console.log(JSON.stringify({ dataSiswa }));
   tampilkanDataSiswa()
   elFormSiswa.reset()
 }

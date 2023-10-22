@@ -40,7 +40,7 @@ function tambahDataAbsen(nomor) {
   const jamMasuk = `${hour}:${minute}:${second}`
 
   const cariAbsen = dataAbsen.find(d => d.hari === hariMasuk && d.nomor === nomor)
-  console.log(JSON.stringify({ cariAbsen }))
+  // console.log(JSON.stringify({ cariAbsen }))
   if (typeof cariAbsen !== 'undefined') {
     alert(`${cariSiswa.nama} sudah absen hari ini`)
     return
@@ -48,7 +48,7 @@ function tambahDataAbsen(nomor) {
 
   dataAbsen.push({ nomor, hari: hariMasuk, jam: jamMasuk });
   simpanData('absen', dataAbsen)
-  console.log(JSON.stringify({ dataAbsen }));
+  // console.log(JSON.stringify({ dataAbsen }));
   tampilkanDataAbsen()
   elFormAbsen.reset()
 }

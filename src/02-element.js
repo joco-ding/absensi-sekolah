@@ -8,6 +8,8 @@ const elNomorAbsen = document.getElementById('nomor-absen')
 const elButtonSiswa = document.getElementById('tombol-siswa')
 const elTabelSiswa = document.getElementById('data-siswa')
 const templateRowSiswa = elTabelSiswa.querySelector('tr')
+const elTabelAbsen = document.getElementById('data-absen')
+const templateRowAbsen = elTabelAbsen.querySelector('tr')
 
 const elButtonAbsen = document.getElementById('tombol-absen')
 const elUploadFile = document.getElementById('upload')
@@ -23,7 +25,6 @@ const elUkuranKode = document.getElementById('ukuran-kode')
 
 const bMulaiScan = document.getElementById('mulai-scan')
 const videoElement = document.getElementById('scanner')
-const hasilElement = document.getElementById('hasil')
 
 function buatElCard(title, element, ukuran) {
   const elCard = document.createElement('div')

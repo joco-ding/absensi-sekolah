@@ -13,10 +13,9 @@ function tampilkanDataSiswa() {
       .replace(/\(-1\)/g, `(${i})`)
     elTabelSiswa.appendChild(row)
   }
-  console.log(JSON.stringify({ jumlahSiswa }))
 }
 
-function tampilkanUpdateDataSiswa(z) {
+function editSiswa(z) {
   indexDataUpdate = z
   const data = dataSiswa[z]
   if (typeof data === 'undefined') {
@@ -28,7 +27,7 @@ function tampilkanUpdateDataSiswa(z) {
   elButtonSiswa.innerText = 'Update Data'
 }
 
-function hapusDataSiswa(z) {
+function hapusSiswa(z) {
   const data = dataSiswa[z]
   if (typeof data === 'undefined') {
     alert('Data tidak ditemukan')
@@ -64,7 +63,15 @@ function tambahSiswa(event) {
       }
       pesan = `${pesan} nama siswa ${data.nama} menjadi ${namaSiswa}`
     }
+    if (pesan === '') {
+      return
+    }
     if (confirm(`Yakin ingin mengedit ${pesan}?`) === false) {
+      return
+    }
+    const cariSiswa = dataSiswa.find(d => d.nomor === nomor)
+    if (typeof cariSiswa !== 'undefined') {
+      alert('Nomor Absen Sudah Digunakan')
       return
     }
     elButtonSiswa.innerText = 'Tambah Data'

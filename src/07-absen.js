@@ -1,18 +1,18 @@
-
-
-// elButtonAbsen.addEventListener('click', tambahDataAbsen);
-const elemenTabel = document.getElementById('data-absen');
-
 function tampilkanDataAbsen() {
-  elemenTabel.innerHTML = '';
+  elTabelAbsen.innerHTML = '';
   const jumlahAbsen = dataAbsen.length;
+
   for (let i = 0; i < jumlahAbsen; i++) {
     const item = dataAbsen[i];
     const cariSiswa = dataSiswa.find(d => d.nomor === item.nomor)
     if (typeof cariSiswa === 'undefined') continue
-    const elemenbarisdata = document.createElement('tr');
-    elemenbarisdata.innerHTML = `<td>${item.nomor}</td><td>${cariSiswa.nama}</td><td>${item.hari}</td><td>${item.jam}</td>`;
-    elemenTabel.appendChild(elemenbarisdata);
+    const row = templateRowAbsen.cloneNode(true)
+    row.innerHTML = row.innerHTML
+      .replace(/nomor-absen/g, item.nomor)
+      .replace(/nama-siswa/g, cariSiswa.nama)
+      .replace(/tanggal/g, item.tanggal)
+      .replace(/jam/g, item.jam)
+    elTabelAbsen.appendChild(row)
   }
 }
 
@@ -27,6 +27,10 @@ function tambahDataAbsen(nomor) {
     alert(`Data Siswa dengan Nomor Absen ${nomor} tidak ditemukan!`)
     return
   }
+  
+  if (confirm(`Lanjut absen #${nomor} ${cariSiswa.nama}?`) === false) {
+    return
+  }
   const now = new Date();
 
   const year = now.getFullYear();
@@ -36,19 +40,17 @@ function tambahDataAbsen(nomor) {
   const minute = String(now.getMinutes()).padStart(2, '0');
   const second = String(now.getSeconds()).padStart(2, '0');
 
-  const hariMasuk = `${year}-${month}-${day}`
+  const tanggalMasuk = `${year}-${month}-${day}`
   const jamMasuk = `${hour}:${minute}:${second}`
 
-  const cariAbsen = dataAbsen.find(d => d.hari === hariMasuk && d.nomor === nomor)
-  // console.log(JSON.stringify({ cariAbsen }))
+  const cariAbsen = dataAbsen.find(d => d.tanggal === tanggalMasuk && d.nomor === nomor)
   if (typeof cariAbsen !== 'undefined') {
     alert(`${cariSiswa.nama} sudah absen hari ini`)
     return
   }
 
-  dataAbsen.push({ nomor, hari: hariMasuk, jam: jamMasuk });
+  dataAbsen.push({ nomor, tanggal: tanggalMasuk, jam: jamMasuk });
   simpanData('absen', dataAbsen)
-  // console.log(JSON.stringify({ dataAbsen }));
   tampilkanDataAbsen()
   elFormAbsen.reset()
 }

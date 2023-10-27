@@ -1,18 +1,3 @@
-// variabel
-let dataSiswa = ambilData('siswa') || []
-let dataAbsen = ambilData('absen') || []
-
-let indexDataUpdate = -1
-
-const Sheet1 = 'Data Siswa'
-const Sheet2 = 'Data Absen'
-
-let KodeperBaris = 3
-let UkuranKode = 100
-let Kolom = 'col-4'
-
-const codeReader = new ZXing.BrowserQRCodeReader();
-
 function ambilData(key) {
   const dataString = localStorage.getItem(key)
   if (typeof dataString === 'undefined' || dataString === null) {
@@ -26,6 +11,22 @@ function simpanData(key, data) {
   console.log(dataTersimpan)
   localStorage.setItem(key, dataTersimpan)
 }
+
+// variabel
+let dataSiswa = ambilData('siswa') || []
+let dataAbsen = ambilData('absen') || []
+
+let indexDataUpdate = -1
+
+const Sheet1 = 'Data Siswa'
+const Sheet2 = 'Data Absen'
+
+let KodeperBaris = 3
+let UkuranKode = 100
+let Kolom = 'col-4'
+let prosesScan = false
+
+const codeReader = new ZXing.BrowserQRCodeReader();
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

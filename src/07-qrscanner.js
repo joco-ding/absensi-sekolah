@@ -1,18 +1,14 @@
-bMulaiScan.addEventListener('click', startQRScan)
-
-function startQRScan() {
-  console.log(JSON.stringify({ prosesScan }))
-  if (prosesScan) {
-    stopQRScan()
+function mulaiPindai() {
+  if (sedangMemindai) {
+    hentikanPindai()
     return
   }
-  bMulaiScan.innerHTML = 'Stop Pindai'
-  prosesScan = true
+  bMulaiScan.innerHTML = 'Hentikan Pindai'
+  sedangMemindai = true
   videoElement.setAttribute('height', '300')
   codeReader.decodeFromVideoDevice(null, videoElement, (result, err) => {
     if (result) {
-      // Hasil pemindaian berhasil
-      stopQRScan()
+      hentikanPindai()
       const regex = /^\d+/
       const nomorAbsen = result.text.match(regex)
       if (nomorAbsen.length === 1) {
@@ -26,9 +22,11 @@ function startQRScan() {
   });
 }
 
-function stopQRScan() {
+function hentikanPindai() {
   codeReader.reset();
   videoElement.setAttribute('height', '0')
-  prosesScan = false
+  sedangMemindai = false
   bMulaiScan.innerHTML = 'Mulai Pindai'
 }
+
+bMulaiScan.addEventListener('click', mulaiPindai)

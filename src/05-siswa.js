@@ -1,5 +1,3 @@
-elFormSiswa.addEventListener('submit', tambahSiswa);
-
 function tampilkanDataSiswa() {
   tampilkanQrCode()
   elTabelSiswa.innerHTML = ''
@@ -55,6 +53,11 @@ function tambahSiswa(event) {
     const data = dataSiswa[indexDataUpdate]
     let pesan = ''
     if (data.nomor !== nomor) {
+      const cariSiswa = dataSiswa.find(d => d.nomor === nomor)
+      if (typeof cariSiswa !== 'undefined') {
+        alert('Nomor Absen Sudah Digunakan')
+        return
+      }
       pesan = `nomor absen ${data.nomor} menjadi ${nomor}`
     }
     if (data.nama !== namaSiswa) {
@@ -69,11 +72,6 @@ function tambahSiswa(event) {
     if (confirm(`Yakin ingin mengedit ${pesan}?`) === false) {
       return
     }
-    const cariSiswa = dataSiswa.find(d => d.nomor === nomor)
-    if (typeof cariSiswa !== 'undefined') {
-      alert('Nomor Absen Sudah Digunakan')
-      return
-    }
     elButtonSiswa.innerText = 'Tambah Data'
     dataSiswa.splice(indexDataUpdate, 1, { nomor, nama: namaSiswa })
     indexDataUpdate = -1
@@ -86,9 +84,9 @@ function tambahSiswa(event) {
     dataSiswa.push({ nomor, nama: namaSiswa });
   }
   simpanData('siswa', dataSiswa)
-  // console.log(JSON.stringify({ dataSiswa }));
   tampilkanDataSiswa()
   elFormSiswa.reset()
 }
 
 tampilkanDataSiswa()
+elFormSiswa.addEventListener('submit', tambahSiswa)

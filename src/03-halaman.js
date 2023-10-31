@@ -2,9 +2,8 @@ elNavMenu.forEach(element => {
   element.addEventListener('click', bukaHalaman);
 });
 
-// global fungsi
-function bukaHalaman(e) {
-  e.preventDefault()
+function bukaHalaman(event) {
+  event.preventDefault()
   elNavMenu.forEach(element => {
     element.classList.remove('active')
   });

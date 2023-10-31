@@ -1,23 +1,3 @@
-
-function buatKodeQR(kode) {
-  elModalTitle.innerText = kode
-  elModalBody.innerHTML = ''
-  const bodyQR = document.createElement('div');
-  bodyQR.setAttribute('class', 'm-auto')
-  bodyQR.setAttribute('style', 'width: 300px')
-
-  new QRCode(bodyQR, {
-    text: kode,
-    width: 300,
-    height: 300,
-    colorDark: "#000000",
-    colorLight: "#ffffff",
-    correctLevel: QRCode.CorrectLevel.H
-  });
-  elModalBody.innerHTML = ''
-  elModalBody.appendChild(bodyQR)
-}
-
 function tampilkanQrCode() {
   elQrCode.innerHTML = ''
   let index = 0
@@ -27,7 +7,6 @@ function tampilkanQrCode() {
     const elRow = document.createElement('div')
     elRow.setAttribute('class', 'row page-break-inside-avoid')
     for (let j = 0; j < KodeperBaris; j++) {
-      // console.log(JSON.stringify({ index, jumlahSiswa }))
       const elCol = document.createElement('div')
       elCol.setAttribute('class', Kolom)
       if (jumlahSiswa > index) {
@@ -35,10 +14,8 @@ function tampilkanQrCode() {
         const nama = data.nama
         const nomor = data.nomor
         const kode = `${nomor}-${nama}`
-        // console.log(JSON.stringify({ kode }))
-        // elCol.innerHTML = kode
         const elTempQR = document.createElement('div')
-        elTempQR.setAttribute('class', 'm-auto mt-3')
+        elTempQR.setAttribute('class', 'mt-3')
         new QRCode(elTempQR, {
           text: kode,
           width: UkuranKode,
@@ -47,7 +24,7 @@ function tampilkanQrCode() {
           colorLight: "#ffffff",
           correctLevel: QRCode.CorrectLevel.H
         });
-        const elTempQRCode = buatElCard(kode, elTempQR, UkuranKode)
+        const elTempQRCode = elemenKartu(kode, elTempQR, UkuranKode)
         elCol.appendChild(elTempQRCode)
       } else {
         _loop = false
@@ -59,61 +36,53 @@ function tampilkanQrCode() {
   }
 }
 
-async function fKolom(tempKPB) {
-  try {
-    if (tempKPB < 1) {
-      await delay(100)
-      elKodeBaris.value = 1
-      return
-    } else if (tempKPB > 12) {
-      await delay(100)
-      elKodeBaris.value = 12
-      return
-    }
-
-    const jumlahKolom = getKolom(tempKPB)
-    if (jumlahKolom < 0) {
-      await delay(100)
-      tempKPB--
-      elKodeBaris.value = tempKPB
-      fKolom(tempKPB)
-      return
-    }
-    console.log(JSON.stringify({ jumlahKolom }))
-    KodeperBaris = tempKPB
-    Kolom = `col-${jumlahKolom}`
-    tampilkanQrCode()
-  } catch (error) {
-    console.error(error)
+function ubahKolom(tempKPB) {
+  if (tempKPB < 1) {
+    elKodeBaris.value = 1
+    return
+  } else if (tempKPB > 12) {
+    elKodeBaris.value = 12
+    return
   }
+
+  const jumlahKolom = getKolom(tempKPB)
+  if (jumlahKolom < 0) {
+    tempKPB--
+    elKodeBaris.value = tempKPB
+    ubahKolom(tempKPB)
+    return
+  }
+  KodeperBaris = tempKPB
+  Kolom = `col-${jumlahKolom}`
+  tampilkanQrCode()
 }
 
 elKodeBaris.addEventListener('change', (e) => {
-  console.log(e.currentTarget.value)
-  const tempKPB = parseInt(e.currentTarget.value, 10)
-  fKolom(tempKPB)
+  try {
+    const tempKPB = parseInt(e.currentTarget.value, 10)
+    ubahKolom(tempKPB)
+  } catch (error) {
+    console.log("Terjadi kesalahan: " + error.message)
+  }
 })
 
-async function fPixel(ukuran) {
-  try {
-    if (ukuran < 20) {
-      await delay(100)
-      elUkuranKode.value = 20
-      return
-    } else if (ukuran > 300) {
-      await delay(100)
-      elUkuranKode.value = 300
-      return
-    }
-    UkuranKode = ukuran
-    tampilkanQrCode()
-  } catch (error) {
-    console.error(error)
+function ubahPixel(ukuran) {
+  if (ukuran < 20) {
+    elUkuranKode.value = 20
+    return
+  } else if (ukuran > 300) {
+    elUkuranKode.value = 300
+    return
   }
+  UkuranKode = ukuran
+  tampilkanQrCode()
 }
 
-elUkuranKode.addEventListener('change', async (e) => {
-  console.log(e.currentTarget.value)
-  const tempUk = parseInt(e.currentTarget.value, 10)
-  fPixel(tempUk)
+elUkuranKode.addEventListener('change', (e) => {
+  try {
+    const ukuran = parseInt(e.currentTarget.value, 10)
+    ubahPixel(ukuran)
+  } catch (error) {
+    console.log("Terjadi kesalahan: " + error.message)
+  }
 })

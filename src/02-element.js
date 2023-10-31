@@ -1,5 +1,3 @@
-
-// elemen
 const elFormSiswa = document.getElementById('form-siswa')
 const elFormAbsen = document.getElementById('form-absen')
 const elNamaSiswa = document.getElementById('nama-siswa')
@@ -7,9 +5,7 @@ const elNomorAbsenSiswa = document.getElementById('nomor-absen-siswa')
 const elNomorAbsen = document.getElementById('nomor-absen')
 const elButtonSiswa = document.getElementById('tombol-siswa')
 const elTabelSiswa = document.getElementById('data-siswa')
-const templateRowSiswa = elTabelSiswa.querySelector('tr')
 const elTabelAbsen = document.getElementById('data-absen')
-const templateRowAbsen = elTabelAbsen.querySelector('tr')
 
 const elButtonAbsen = document.getElementById('tombol-absen')
 const elUploadFile = document.getElementById('upload')
@@ -26,16 +22,20 @@ const elUkuranKode = document.getElementById('ukuran-kode')
 const bMulaiScan = document.getElementById('mulai-scan')
 const videoElement = document.getElementById('scanner')
 
-function buatElCard(title, element, ukuran) {
-  const elCard = document.createElement('div')
-  const elKode = document.createElement('div')
-  elKode.setAttribute('class', 'mx-auto')
-  elKode.setAttribute('style',`max-width: ${ukuran}px`)
-  elKode.appendChild(element)
-  const elCardBody = document.createElement('div')
-  elCardBody.setAttribute('class', 'p-0')
-  elCardBody.innerHTML=`<div class="w-100 mx-auto" style="max-width: ${ukuran}px"><p class="text-center text-truncate"><small>${title}</small></p></div>`
-  elCard.appendChild(elKode)
-  elCard.appendChild(elCardBody)
-  return elCard
+// template
+const templateRowSiswa = elTabelSiswa.querySelector('tr')
+const templateRowAbsen = elTabelAbsen.querySelector('tr')
+
+function elemenKartu(judul, elemen, ukuran) {
+  const elemenUtama = document.createElement('div')
+  const elemenKode = document.createElement('div')
+  const elemenBodi = document.createElement('div')
+  elemenKode.setAttribute('class', 'mx-auto')
+  elemenKode.setAttribute('style',`max-width: ${ukuran}px`)
+  elemenKode.appendChild(elemen)
+  elemenBodi.setAttribute('class', 'p-0')
+  elemenBodi.innerHTML=`<div class="mx-auto" style="max-width: ${ukuran}px"><p class="text-center text-truncate"><small>${judul}</small></p></div>`
+  elemenUtama.appendChild(elemenKode)
+  elemenUtama.appendChild(elemenBodi)
+  return elemenUtama
 }

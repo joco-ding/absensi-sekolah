@@ -1,4 +1,4 @@
-function downloadExcel() {
+function pencadanganData() {
 
   // Membuat workbook
   const wb = XLSX.utils.book_new();
@@ -38,7 +38,7 @@ function downloadExcel() {
 
 
 
-function xlsxToStore() {
+function pemulihanData() {
   const input = document.getElementById('upload');
   const file = input.files[0];
 

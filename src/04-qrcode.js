@@ -5,7 +5,7 @@ function tampilkanQrCode() {
   let _loop = true
   while (_loop) {
     const elRow = document.createElement('div')
-    elRow.setAttribute('class', 'row page-break-inside-avoid')
+    elRow.setAttribute('class', 'row')
     for (let j = 0; j < KodeperBaris; j++) {
       const elCol = document.createElement('div')
       elCol.setAttribute('class', Kolom)

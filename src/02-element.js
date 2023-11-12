@@ -9,8 +9,6 @@ const elTabelAbsen = document.getElementById('data-absen')
 
 const elButtonAbsen = document.getElementById('tombol-absen')
 const elUploadFile = document.getElementById('upload')
-const elModalTitle = document.getElementById('modal-title')
-const elModalBody = document.getElementById('modal-body')
 const elQrCode = document.getElementById('area-cetak-qrcode')
 
 const elHalaman = document.querySelectorAll('.halaman')
@@ -19,23 +17,22 @@ const elNavMenu = document.querySelectorAll(".menu-halaman")
 const elKodeBaris = document.getElementById('kode-per-baris')
 const elUkuranKode = document.getElementById('ukuran-kode')
 
-const bMulaiScan = document.getElementById('mulai-scan')
-const videoElement = document.getElementById('scanner')
+const elTombolPindai = document.getElementById('tombol-pindai')
+const elKamera = document.getElementById('kamera')
 
 // template
 const templateRowSiswa = elTabelSiswa.querySelector('tr')
 const templateRowAbsen = elTabelAbsen.querySelector('tr')
+const templateKartu = document.querySelector('.kartu-qr')
 
 function elemenKartu(judul, elemen, ukuran) {
-  const elemenUtama = document.createElement('div')
-  const elemenKode = document.createElement('div')
-  const elemenBodi = document.createElement('div')
-  elemenKode.setAttribute('class', 'mx-auto')
-  elemenKode.setAttribute('style',`max-width: ${ukuran}px`)
-  elemenKode.appendChild(elemen)
-  elemenBodi.setAttribute('class', 'p-0')
-  elemenBodi.innerHTML=`<div class="mx-auto" style="max-width: ${ukuran}px"><p class="text-center text-truncate"><small>${judul}</small></p></div>`
-  elemenUtama.appendChild(elemenKode)
-  elemenUtama.appendChild(elemenBodi)
-  return elemenUtama
+  const kartu = templateKartu.cloneNode(true)
+  kartu.innerHTML = kartu.innerHTML
+    .replace(/judul/g, judul)
+    .replace(/100px/g, `${ukuran}px`)
+  const lokasiKode = kartu.querySelector('.kode')
+  const penggantiKode = lokasiKode.cloneNode(true)
+  penggantiKode.appendChild(elemen)
+  kartu.replaceChild(penggantiKode, lokasiKode)
+  return kartu
 }

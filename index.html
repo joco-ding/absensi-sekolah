@@ -33,14 +33,14 @@
       opacity: 0;
     }
 
-    .page-break-inside-avoid {
+    .row {
       page-break-inside: avoid !important;
     }
   </style>
 </head>
 
 <body>
-  <nav id="header" class="navbar navbar-expand-md navbar-dark bg-dark d-print-none" data-bs-theme="dark">
+  <nav id="header" class="navbar navbar-expand-md bg-dark d-print-none" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand menu-halaman" menu="home-page" href="#">Absen Sekolah</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -50,7 +50,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link menu-halaman" menu="home-page" href="#">Home</a>
+            <a class="nav-link menu-halaman active" menu="home-page" href="#">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link menu-halaman" menu="siswa-page" href="#">Data Siswa</a>
@@ -130,17 +130,17 @@
   </div>
 
   <!-- absen-page -->
-  <div class="container d-none halaman" id="absen-page">
+  <div class="container d-none halaman text-center" id="absen-page">
     <h1 class="my-3">Absen</h1>
     <div class="row">
-      <div class="col-lg-5 text-center">
-        <video id="scanner" width="300" height="0" class="text-bg-success"></video>
+      <div class="col-lg-5">
+        <video id="kamera" width="300" height="0" class="text-bg-success"></video>
         <br />
-        <button type="button" id="mulai-scan" class="btn btn-primary">
+        <button type="button" id="tombol-pindai" class="btn btn-primary">
           Mulai Pindai
         </button>
       </div>
-      <div class="col-lg-7">
+      <div class="col-lg-7 text-start">
         <table class="table">
           <thead>
             <tr>
@@ -163,12 +163,11 @@
     </div>
   </div>
 
-
   <!-- qrcode-page -->
   <div class="container d-none halaman" id="qrcode-page">
     <div class="d-flex justify-content-between my-3 d-print-none">
       <h1 class="d-none d-sm-block">Cetak Kode QR</h1>
-      <div class="input-group" style="width: 400px;">
+      <div class="input-group" style="width: 330px;">
         <div class="form-floating">
           <input type="number" class="form-control" id="kode-per-baris" placeholder="" value="3">
           <label for="floatingInput">Kode per Baris</label>
@@ -182,7 +181,16 @@
         </button>
       </div>
     </div>
-    <div id="area-cetak-qrcode"></div>
+    <div id="area-cetak-qrcode">
+      <div class="kartu-qr">
+        <div class="mx-auto kode" style="max-width: 100px"></div>
+        <div class="p-0">
+          <div class="mx-auto" style="max-width: 100px">
+            <p class="text-center text-truncate"><small>judul</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -199,7 +207,7 @@
   <script src="src/04-qrcode.js?v=-1" defer></script>
   <script src="src/05-siswa.js?v=-1" defer></script>
   <script src="src/06-absen.js?v=-1" defer></script>
-  <script src="src/07-qrscanner.js?v=-1" defer></script>
+  <script src="src/07-pemindai.js?v=-1" defer></script>
   <script src="src/08-excel.js?v=-1" defer></script>
 </body>
 

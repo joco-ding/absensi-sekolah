@@ -3,10 +3,10 @@ function mulaiPindai() {
     hentikanPindai()
     return
   }
-  bMulaiScan.innerHTML = 'Hentikan Pindai'
+  elTombolPindai.innerHTML = 'Hentikan Pindai'
   sedangMemindai = true
-  videoElement.setAttribute('height', '300')
-  codeReader.decodeFromVideoDevice(null, videoElement, (result, err) => {
+  elKamera.setAttribute('height', '300')
+  codeReader.decodeFromVideoDevice(null, elKamera, (result, err) => {
     if (result) {
       hentikanPindai()
       const regex = /^\d+/
@@ -24,9 +24,9 @@ function mulaiPindai() {
 
 function hentikanPindai() {
   codeReader.reset();
-  videoElement.setAttribute('height', '0')
+  elKamera.setAttribute('height', '0')
   sedangMemindai = false
-  bMulaiScan.innerHTML = 'Mulai Pindai'
+  elTombolPindai.innerHTML = 'Mulai Pindai'
 }
 
-bMulaiScan.addEventListener('click', mulaiPindai)
+elTombolPindai.addEventListener('click', mulaiPindai)

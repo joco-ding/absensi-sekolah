@@ -13,18 +13,18 @@ function tampilkanQrCode() {
         const data = dataSiswa[index]
         const nama = data.nama
         const nomor = data.nomor
-        const kode = `${nomor}-${nama}`
+        const teksKode = `${nomor}-${nama}`
         const elTempQR = document.createElement('div')
         elTempQR.setAttribute('class', 'mt-3')
         new QRCode(elTempQR, {
-          text: kode,
+          text: teksKode,
           width: UkuranKode,
           height: UkuranKode,
           colorDark: "#000000",
           colorLight: "#ffffff",
           correctLevel: QRCode.CorrectLevel.H
         });
-        const elTempQRCode = elemenKartu(kode, elTempQR, UkuranKode)
+        const elTempQRCode = elemenKartu(teksKode, elTempQR, UkuranKode)
         elCol.appendChild(elTempQRCode)
       } else {
         _loop = false

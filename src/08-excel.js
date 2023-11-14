@@ -36,8 +36,6 @@ function pencadanganData() {
   document.body.removeChild(link);
 }
 
-
-
 function pemulihanData() {
   const input = document.getElementById('upload');
   const file = input.files[0];

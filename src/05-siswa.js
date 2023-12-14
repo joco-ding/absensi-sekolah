@@ -1,5 +1,5 @@
 function tampilkanDataSiswa() {
-  tampilkanQrCode()
+  // tampilkanQrCode()
   elTabelSiswa.innerHTML = ''
   const jumlahSiswa = dataSiswa.length
   for (let i = 0; i < jumlahSiswa; i++) {

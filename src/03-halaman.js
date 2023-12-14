@@ -14,4 +14,7 @@ function bukaHalaman(event) {
     element.classList.add('d-none')
   })
   document.getElementById(dataMenu).classList.remove('d-none')
+  if (dataMenu==='qrcode-page') {
+    tampilkanQrCode()
+  }
 }

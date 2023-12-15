@@ -1,5 +1,4 @@
 function tampilkanDataSiswa() {
-  // tampilkanQrCode()
   elTabelSiswa.innerHTML = ''
   const jumlahSiswa = dataSiswa.length
   for (let i = 0; i < jumlahSiswa; i++) {
@@ -88,5 +87,4 @@ function tambahSiswa(event) {
   elFormSiswa.reset()
 }
 
-tampilkanDataSiswa()
 elFormSiswa.addEventListener('submit', tambahSiswa)

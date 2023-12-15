@@ -54,5 +54,3 @@ function tambahDataAbsen(nomor) {
   tampilkanDataAbsen()
   elFormAbsen.reset()
 }
-
-tampilkanDataAbsen()

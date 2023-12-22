@@ -19,8 +19,11 @@ function simpanData(key, data) {
   }
 }
 
-let dataSiswa = ambilData('siswa') || []
-let dataAbsen = ambilData('absen') || []
+const keySiswa = 'data-siswa'
+const keyAbsen = 'data-absen'
+
+let dataSiswa = ambilData(keySiswa) || []
+let dataAbsen = ambilData(keyAbsen) || []
 
 let indexDataUpdate = -1
 

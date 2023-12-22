@@ -34,7 +34,7 @@ function hapusSiswa(z) {
     return
   }
   dataSiswa.splice(z, 1)
-  simpanData('siswa', dataSiswa)
+  simpanData(keySiswa, dataSiswa)
   tampilkanDataSiswa()
 }
 
@@ -82,7 +82,7 @@ function tambahSiswa(event) {
     }
     dataSiswa.push({ nomor, nama: namaSiswa });
   }
-  simpanData('siswa', dataSiswa)
+  simpanData(keySiswa, dataSiswa)
   tampilkanDataSiswa()
   elFormSiswa.reset()
 }

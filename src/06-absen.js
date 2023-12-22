@@ -50,7 +50,7 @@ function tambahDataAbsen(nomor) {
   }
 
   dataAbsen.push({ nomor, tanggal: tanggalMasuk, jam: jamMasuk });
-  simpanData('absen', dataAbsen)
+  simpanData(keyAbsen, dataAbsen)
   tampilkanDataAbsen()
   elFormAbsen.reset()
 }

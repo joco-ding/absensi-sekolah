@@ -53,8 +53,8 @@ function pemulihanData() {
     dataSiswa = XLSX.utils.sheet_to_json(wsSiswa);
     dataAbsen = XLSX.utils.sheet_to_json(wsAbsen);
 
-    simpanData('siswa', dataSiswa)
-    simpanData('absen', dataAbsen)
+    simpanData(keySiswa, dataSiswa)
+    simpanData(keyAbsen, dataAbsen)
     tampilkanDataSiswa()
     tampilkanDataAbsen()
   };

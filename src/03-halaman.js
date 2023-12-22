@@ -1,11 +1,11 @@
-elNavMenu.forEach(element => {
+elMenu.forEach(element => {
   element.addEventListener('click', bukaHalaman);
 });
 
 function bukaHalaman(event) {
   event.preventDefault()
 
-  const dataMenu = this.getAttribute('menu');
+  const dataMenu = this.getAttribute('halaman');
   switch (dataMenu) {
     case 'qrcode-page':
       tampilkanQrCode()
@@ -20,7 +20,7 @@ function bukaHalaman(event) {
       break;
   }
 
-  elNavMenu.forEach(element => {
+  elMenu.forEach(element => {
     element.classList.remove('active')
   });
   this.classList.add('active')

@@ -1,4 +1,4 @@
-const elNavMenu = document.querySelectorAll(".nav-link")
+const elMenu = document.querySelectorAll(".nav-link")
 const elHalaman = document.querySelectorAll('.halaman')
 
 const elFormSiswa = document.getElementById('form-siswa')

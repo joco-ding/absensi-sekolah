@@ -11,7 +11,11 @@
   <style>
     #home-page {
       width: 100vw;
-      height: calc(100vh - 56px);
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
     }
 
     .btn-group {
@@ -39,7 +43,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md bg-dark d-print-none" data-bs-theme="dark">
+  <nav class="navbar navbar-expand-md bg-dark d-print-none" style="z-index: 100;" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Absen Sekolah</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -49,16 +53,16 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" menu="home-page" href="#">Home</a>
+            <a class="nav-link active" halaman="home-page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" menu="siswa-page" href="#">Data Siswa</a>
+            <a class="nav-link" halaman="siswa-page" href="#">Data Siswa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" menu="absen-page" href="#">Absen</a>
+            <a class="nav-link" halaman="absen-page" href="#">Absen</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" menu="qrcode-page" href="#">Cetak Kode QR</a>
+            <a class="nav-link" halaman="qrcode-page" href="#">Cetak Kode QR</a>
           </li>
         </ul>
       </div>
@@ -67,7 +71,7 @@
 
   <!-- home-page -->
   <div class="d-flex halaman" id="home-page">
-    <div class="m-auto text-center">
+    <div class="m-auto text-center d-ab">
       <h1>Selamat Datang di</h1>
       <h2>Sistem Absensi Sekolah</h2>
       <div class="btn-group" role="group" aria-label="Backup-Restore">

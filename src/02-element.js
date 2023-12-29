@@ -20,14 +20,4 @@ const templateRowSiswa = elTabelSiswa.querySelector('tr')
 const templateRowAbsen = elTabelAbsen.querySelector('tr')
 const templateKartu = document.querySelector('.kartu-qr')
 
-function elemenKartu(teksKode, elemen, ukuran) {
-  const kartu = templateKartu.cloneNode(true)
-  kartu.innerHTML = kartu.innerHTML
-    .replace(/teksKode/g, teksKode)
-    .replace(/100px/g, `${ukuran}px`)
-  const lokasiKode = kartu.querySelector('.kode')
-  const penggantiKode = lokasiKode.cloneNode(true)
-  penggantiKode.appendChild(elemen)
-  kartu.replaceChild(penggantiKode, lokasiKode)
-  return kartu
-}
+

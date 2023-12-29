@@ -1,3 +1,6 @@
+const codeReader = new ZXing.BrowserQRCodeReader();
+let sedangMemindai = false
+
 function mulaiPindai() {
   if (sedangMemindai) {
     hentikanPindai()

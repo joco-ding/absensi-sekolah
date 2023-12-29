@@ -32,26 +32,5 @@ const Sheet2 = 'Data Absen'
 
 let KodeperBaris = 3
 let UkuranKode = 100
-let Kolom = 'col-4'
-let sedangMemindai = false
 
-const codeReader = new ZXing.BrowserQRCodeReader();
 
-function getKolom(jumlah) {
-  switch (jumlah) {
-    case 1:
-      return 12;
-    case 2:
-      return 6;
-    case 3:
-      return 4;
-    case 4:
-      return 3;
-    case 6:
-      return 2;
-    case 12:
-      return 1;
-    default:
-      return -1;
-  }
-}

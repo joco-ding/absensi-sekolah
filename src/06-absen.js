@@ -1,27 +1,21 @@
 function tampilkanDataAbsen() {
   elTabelAbsen.innerHTML = '';
-  const jumlahAbsen = dataAbsen.length;
 
-  for (let i = 0; i < jumlahAbsen; i++) {
+  for (let i = 0; i < dataAbsen.length; i++) {
     const item = dataAbsen[i];
     const cariSiswa = dataSiswa.find(d => d.nomor === item.nomor)
     if (typeof cariSiswa === 'undefined') continue
     const row = templateRowAbsen.cloneNode(true)
     row.innerHTML = row.innerHTML
-      .replace(/nomor-absen/g, item.nomor)
-      .replace(/nama-siswa/g, cariSiswa.nama)
-      .replace(/tanggal/g, item.tanggal)
-      .replace(/jam/g, item.jam)
+      .replace(/nomor-absen/, item.nomor)
+      .replace(/nama-siswa/, cariSiswa.nama)
+      .replace(/tanggal/, item.tanggal)
+      .replace(/jam/, item.jam)
     elTabelAbsen.appendChild(row)
   }
 }
 
 function tambahDataAbsen(nomor) {
-  if (nomor === '') {
-    alert('Mohon lengkapi isian!');
-    return;
-  }
-
   const cariSiswa = dataSiswa.find(d => d.nomor === nomor)
   if (typeof cariSiswa === 'undefined') {
     alert(`Data Siswa dengan Nomor Absen ${nomor} tidak ditemukan!`)
@@ -52,5 +46,4 @@ function tambahDataAbsen(nomor) {
   dataAbsen.push({ nomor, tanggal: tanggalMasuk, jam: jamMasuk });
   simpanData(keyAbsen, dataAbsen)
   tampilkanDataAbsen()
-  elFormAbsen.reset()
 }

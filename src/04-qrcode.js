@@ -5,17 +5,15 @@ function tampilkanQrCode() {
   let _loop = true
   while (_loop) {
     const elRow = document.createElement('div')
-    elRow.setAttribute('class', 'row')
+    elRow.className = 'row'
     for (let j = 0; j < KodeperBaris; j++) {
       const elCol = document.createElement('div')
-      elCol.setAttribute('class', Kolom)
+      elCol.className = 'col'
       if (jumlahSiswa > index) {
-        const data = dataSiswa[index]
-        const nama = data.nama
-        const nomor = data.nomor
-        const teksKode = `${nomor}-${nama}`
+        const item = dataSiswa[index]
+        const teksKode = `${item.nomor}-${item.nama}`
         const elTempQR = document.createElement('div')
-        elTempQR.setAttribute('class', 'mt-3')
+        elTempQR.className = 'mt-3'
         new QRCode(elTempQR, {
           text: teksKode,
           width: UkuranKode,
@@ -24,8 +22,16 @@ function tampilkanQrCode() {
           colorLight: "#ffffff",
           correctLevel: QRCode.CorrectLevel.H
         });
-        const elTempQRCode = elemenKartu(teksKode, elTempQR, UkuranKode)
-        elCol.appendChild(elTempQRCode)
+        const elDataCol = templateKartu.cloneNode(true)
+        elDataCol.innerHTML = elDataCol.innerHTML
+          .replace(/teksKode/g, teksKode)
+          .replace(/100px/g, `${UkuranKode}px`)
+        const lokasiKode = elDataCol.querySelector('.kode')
+        const penggantiKode = lokasiKode.cloneNode(true)
+        penggantiKode.appendChild(elTempQR)
+        elDataCol.replaceChild(penggantiKode, lokasiKode)
+
+        elCol.appendChild(elDataCol)
       } else {
         _loop = false
       }
@@ -36,52 +42,35 @@ function tampilkanQrCode() {
   }
 }
 
-function ubahKolom(tempKPB) {
-  if (tempKPB < 1) {
-    elKodeBaris.value = 1
-    return
-  } else if (tempKPB > 12) {
-    elKodeBaris.value = 12
-    return
-  }
-
-  const jumlahKolom = getKolom(tempKPB)
-  if (jumlahKolom < 0) {
-    tempKPB--
-    elKodeBaris.value = tempKPB
-    ubahKolom(tempKPB)
-    return
-  }
-  KodeperBaris = tempKPB
-  Kolom = `col-${jumlahKolom}`
-  tampilkanQrCode()
-}
-
 elKodeBaris.addEventListener('change', (e) => {
   try {
-    const tempKPB = parseInt(e.currentTarget.value, 10)
-    ubahKolom(tempKPB)
+    const tempKPB = Number(e.currentTarget.value)
+    if (tempKPB < 1) {
+      elKodeBaris.value = 1
+      return
+    } else if (tempKPB > 12) {
+      elKodeBaris.value = 12
+      return
+    }
+    KodeperBaris = tempKPB
+    tampilkanQrCode()
   } catch (error) {
     console.log("Terjadi kesalahan: " + error.message)
   }
 })
 
-function ubahPixel(ukuran) {
-  if (ukuran < 20) {
-    elUkuranKode.value = 20
-    return
-  } else if (ukuran > 300) {
-    elUkuranKode.value = 300
-    return
-  }
-  UkuranKode = ukuran
-  tampilkanQrCode()
-}
-
 elUkuranKode.addEventListener('change', (e) => {
   try {
-    const ukuran = parseInt(e.currentTarget.value, 10)
-    ubahPixel(ukuran)
+    const ukuran = Number(e.currentTarget.value)
+    if (ukuran < 20) {
+      elUkuranKode.value = 20
+      return
+    } else if (ukuran > 300) {
+      elUkuranKode.value = 300
+      return
+    }
+    UkuranKode = ukuran
+    tampilkanQrCode()
   } catch (error) {
     console.log("Terjadi kesalahan: " + error.message)
   }

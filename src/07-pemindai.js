@@ -12,10 +12,9 @@ function mulaiPindai() {
   codeReader.decodeFromVideoDevice(null, elKamera, (result, err) => {
     if (result) {
       hentikanPindai()
-      const regex = /^\d+/
-      const nomorAbsen = result.text.match(regex)
+      const nomorAbsen = result.text.match(/^\d+/)
       if (nomorAbsen.length === 1) {
-        tambahDataAbsen(nomorAbsen[0])
+        tambahDataAbsen(Number(nomorAbsen[0]))
       }
     }
 

@@ -42,11 +42,12 @@ function tambahSiswa(event) {
   event.preventDefault();
   console.log('tombol tambah data di-klik');
   let namaSiswa = elNamaSiswa.value;
-  let nomor = elNomorAbsenSiswa.value;
-  if (namaSiswa === '' || nomor === '') {
+  let nomorAbsen = elNomorAbsenSiswa.value;
+  if (namaSiswa === '' || nomorAbsen === '') {
     alert('Mohon lengkapi isian!')
     return
   }
+  const nomor = Number(nomorAbsen)
 
   if (indexDataUpdate > -1) {
     const data = dataSiswa[indexDataUpdate]

@@ -25,17 +25,10 @@ function tambahDataAbsen(nomor) {
   if (confirm(`Lanjut absen #${nomor} ${cariSiswa.nama}?`) === false) {
     return
   }
-  const now = new Date();
 
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0'); // Bulan dimulai dari 0
-  const day = String(now.getDate()).padStart(2, '0');
-  const hour = String(now.getHours()).padStart(2, '0');
-  const minute = String(now.getMinutes()).padStart(2, '0');
-  const second = String(now.getSeconds()).padStart(2, '0');
-
-  const tanggalMasuk = `${year}-${month}-${day}`
-  const jamMasuk = `${hour}:${minute}:${second}`
+  const waktuAbsen = ambilWaktu()
+  const tanggalMasuk = waktuAbsen.tanggal
+  const jamMasuk = waktuAbsen.jam
 
   const cariAbsen = dataAbsen.find(d => d.tanggal === tanggalMasuk && d.nomor === nomor)
   if (typeof cariAbsen !== 'undefined') {

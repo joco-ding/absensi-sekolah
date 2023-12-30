@@ -19,11 +19,29 @@ function simpanData(key, data) {
   }
 }
 
+function ambilWaktu() {
+  const saatini = new Date()
+  const tahun = saatini.getFullYear()
+  const bulan = String(saatini.getMonth() + 1).padStart(2, '0')
+  const tanggal = String(saatini.getDate()).padStart(2, '0')
+  const jam = String(saatini.getHours()).padStart(2, '0')
+  const menit = String(saatini.getMinutes()).padStart(2, '0')
+  const detik = String(saatini.getSeconds()).padStart(2, '0')
+
+  const tanggalMasuk = `${tahun}-${bulan}-${tanggal}`
+  const jamMasuk = `${jam}:${menit}:${detik}`
+
+  return { tanggal: tanggalMasuk, jam: jamMasuk }
+}
+
 const keySiswa = 'data-siswa'
 const keyAbsen = 'data-absen'
 
-let dataSiswa = ambilData(keySiswa) || []
-let dataAbsen = ambilData(keyAbsen) || []
+let dataSiswa = [{ nomor: 1, nama: 'Adam' }]
+let dataAbsen = [{ nomor: 1, tanggal: ambilWaktu().tanggal, jam: ambilWaktu().jam }]
+
+dataSiswa = ambilData(keySiswa) || []
+dataAbsen = ambilData(keyAbsen) || []
 
 let indexDataUpdate = -1
 

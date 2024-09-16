@@ -1,3 +1,5 @@
+
+
 function ambilData(key) {
   try {
     const dataString = localStorage.getItem(key)

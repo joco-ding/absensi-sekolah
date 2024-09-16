@@ -58,5 +58,5 @@ function pemulihanData() {
     tampilkanDataSiswa()
     tampilkanDataAbsen()
   };
-  reader.readAsBinaryString(file);
+  reader.readAsArrayBuffer(file);
 }
